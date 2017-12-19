@@ -12,7 +12,15 @@ const dbConfigObj = require('./knexfile.js');
 
 const app = express();
 
-const appDb = connectToDb(dbConfigObj.development);
+let dbConnectionConfig
+
+if( process.env.NODE_ENV === 'production' ){
+  dbConnectionConfig = dbConfigObj.production
+} else {
+  dbConnectionConfig = dbConfigObj.development
+}
+
+const appDb = connectToDb(dbConnectionConfig);
 app.locals.db = appDb;
 
 // Configuración del Motor de la plantillas EJS
