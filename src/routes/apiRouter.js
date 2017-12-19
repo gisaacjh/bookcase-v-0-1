@@ -9,7 +9,7 @@ const Documents = require("../models/documents.js");
 
 //Mis rutas que responen JSON
 function getAllDocuments (req, res) {
-  Documents.query().eager("project_documentsTable").then(data => res.json(data));
+  Documents.query().then(data => res.json(data));
 
 }
 

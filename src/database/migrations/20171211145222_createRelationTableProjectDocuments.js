@@ -14,7 +14,7 @@ exports.down = function(knex, Promise) {
   return knex
     .schema
     .table('project_documentsTable', table => {
-      table.dropForeign('id');
+      table.dropForeign('id_documents')
       table.dropColumn('id_documents');
       return table;
     });
